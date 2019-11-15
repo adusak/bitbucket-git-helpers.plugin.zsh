@@ -16,6 +16,7 @@ def construct_PR_URL
     host = repo_url
   else
     host = remote[bbloc..-5].sub(':','/')
+  end
   return "https://#{host}/pull-requests/new?source=#{git_branch()}&t=1"
 end
 
