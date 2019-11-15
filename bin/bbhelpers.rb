@@ -21,7 +21,7 @@ end
 
 def repo_url
   remote = git_remote
-  url_parts = remote[remote.index("@")+1..remote.index(".git")-1].split("/")  
+  parts = remote[remote.index("@")+1..remote.index(".git")-1].split("/")  
   if remote.index("ssh") == 0
     return "#{parts[0]}/projects/#{parts[1]}/repos/#{parts[2]}"
   end
