@@ -12,11 +12,12 @@ require_relative 'bbhelpers'
 def construct_PR_list_URL
   remote = git_remote()
   bbloc = remote.index('bitbucket.org')
-  if not bbloc
-    puts "Only works for repositories with their origin remote on bitbucket.org"
-    exit 1
+   if not bbloc
+    host = repo_url
+  else
+    host = remote[bbloc..-5].sub(':','/')
   end
-  return "https://#{remote[bbloc..-5].sub(':','/')}/pull-requests/"
+  return "https://#{host}/pull-requests/"
 end
 
 if ARGV.length > 0
